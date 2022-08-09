@@ -1,0 +1,304 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Portfolio blog JSON API",
+        "description": "Portfolio blog API documentation",
+        "contact": {
+            "email": "yseffk@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "description": "Login",
+                "operationId": "7b9026fc5982d72a0a0978e3c868fc33",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "password",
+                                    "email"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "description": "User email",
+                                        "type": "string",
+                                        "nullable": false
+                                    },
+                                    "password": {
+                                        "description": "User password",
+                                        "type": "string",
+                                        "nullable": false
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User is successfully logged in.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "token": {
+                                            "description": "JWT token for user authorization.",
+                                            "type": "string",
+                                            "example": "eyJ0eXAiOiJKV1QiL.eyJpZCI6IjEzM.ZvkYYnx3_9rymsDAx9yuOcc1I",
+                                            "nullable": false
+                                        },
+                                        "user": {
+                                            "description": "User data.",
+                                            "type": "object",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Authentication error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Error information.",
+                                            "type": "string",
+                                            "example": "Invalid email or password.",
+                                            "nullable": false
+                                        },
+                                        "errors": {
+                                            "description": "Object with all errors.",
+                                            "type": "object",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Validation information.",
+                                            "type": "string",
+                                            "example": "The given data was invalid.",
+                                            "nullable": false
+                                        },
+                                        "errors": {
+                                            "description": "Object with all errors.",
+                                            "type": "object",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth/logout/": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "User logout",
+                "operationId": "1b8b79a9f8a5ef0fe6208edef2ff037e",
+                "responses": {
+                    "200": {
+                        "description": "User successfully signed out.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "",
+                                            "type": "string",
+                                            "example": "",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        },
+        "/api/auth/refresh/": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "User refresh JWT token",
+                "operationId": "d058c6d181680358063c1f10b88e8ad8",
+                "responses": {
+                    "200": {
+                        "description": "User is successfully logged in.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "token": {
+                                            "description": "JWT token for user authorization.",
+                                            "type": "string",
+                                            "example": "eyJ0eXAiOiJKV1QiL.eyJpZCI6IjEzM.ZvkYYnx3_9rymsDAx9yuOcc1I",
+                                            "nullable": false
+                                        },
+                                        "user": {
+                                            "description": "User data.",
+                                            "type": "object",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        },
+        "/api/auth/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "description": "Register user",
+                "operationId": "e21b8a4b1ab50f18b1b4b84cf83daf8f",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "first_name",
+                                    "last_name",
+                                    "email"
+                                ],
+                                "properties": {
+                                    "first_name": {
+                                        "description": "User first name",
+                                        "type": "string",
+                                        "nullable": false
+                                    },
+                                    "last_name": {
+                                        "description": "User last name",
+                                        "type": "string",
+                                        "nullable": false
+                                    },
+                                    "email": {
+                                        "description": "User email",
+                                        "type": "string",
+                                        "nullable": false
+                                    },
+                                    "password": {
+                                        "description": "User password",
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "phone": {
+                                        "description": "User phone",
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User is successfully register."
+                    },
+                    "400": {
+                        "description": "Domain error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Error information.",
+                                            "type": "string",
+                                            "example": "Domain error.",
+                                            "nullable": false
+                                        },
+                                        "errors": {
+                                            "description": "Object with all errors.",
+                                            "type": "object",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Validation information.",
+                                            "type": "string",
+                                            "example": "The given data was invalid.",
+                                            "nullable": false
+                                        },
+                                        "errors": {
+                                            "description": "Object with all errors.",
+                                            "type": "object",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearer": {
+                "type": "http",
+                "description": "Login with email and password to get the authentication token",
+                "name": "Token based Based",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
