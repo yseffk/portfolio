@@ -66,7 +66,7 @@ class RegisterService extends EntityUserAbstractService
             $this->abstract()
                 ->entity()
                 ->role()
-                ->setForUser($user->id, 'customer');
+                ->setForUser($user->id, 'admin');
 
             $user->load('profile');
 

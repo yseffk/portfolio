@@ -25,10 +25,7 @@ use Illuminate\Database\Eloquent\Model;
 class ActionInstance extends AbstractInstance
 {
     protected array $actions = [
-        'recalculateOrder' => [
-            'class' => RecalculateOrderService::class,
-            'dto' => false,
-        ],
+
         'signIn' => [
             'class' => SignInService::class,
             'dto' => false,
