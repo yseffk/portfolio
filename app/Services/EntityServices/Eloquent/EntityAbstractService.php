@@ -39,8 +39,8 @@ abstract class EntityAbstractService
          * @var DataTransferObject $dto
          * @var Model $model
          */
+        dd($this->dto);
         $dto = $this->prepareDtoData(new $this->dto($arguments));
-dd($dto);
         $model = $this->repository()->create($dto->toArray());
 
         return $model;
