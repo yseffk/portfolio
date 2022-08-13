@@ -79,6 +79,7 @@ class BlogPostController extends BaseController
     public function show(string $slug, Request $request)
     {
         $post = $this->BlogPostRepository->getPublishedBySlug($slug);
+        dd($post);
         $filter = [
             'query' => [
                 'blog_post_id' => $post->id,
