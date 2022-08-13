@@ -118,11 +118,11 @@ class LoginController extends BaseController
     }
 
     /**
-     * @Route("/api/auth/logout/", methods={"POST"})
+     * @Route("/api/auth/logout", methods={"POST"})
      *
      * @OA\Post (
      *     tags={"Auth"},
-     *     path="/api/auth/logout/",
+     *     path="/api/auth/logout",
      *     summary="User logout",
      *     @OA\Response(
      *       response="200",
@@ -155,11 +155,11 @@ class LoginController extends BaseController
     }
 
     /**
-     * @Route("/api/auth/refresh/", methods={"POST"})
+     * @Route("/api/auth/refresh", methods={"POST"})
      *
      * @OA\Post (
      *     tags={"Auth"},
-     *     path="/api/auth/refresh/",
+     *     path="/api/auth/refresh",
      *     summary="User refresh JWT token",
      *     @OA\Response(
      *       response="200",
