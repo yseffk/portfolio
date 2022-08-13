@@ -96,7 +96,6 @@ abstract class EntityAbstractService
      */
     public function setDto($dto): void
     {
-        dd($dto);
         $this->dto = $dto;
     }
 
