@@ -53,46 +53,6 @@ class User extends Authenticatable implements JWTSubject
     ];
 
     /**
-     * @return HasMany
-     */
-    public function shipping(): HasMany
-    {
-        return $this->hasMany(ShopOrder::class, 'user_id', 'id');
-    }
-
-    /**
-     * @return HasOne
-     */
-    public function profile(): HasOne
-    {
-        return $this->hasOne(UserProfile::class, 'user_id', 'id');
-    }
-
-    /**
-     * @return HasOne
-     */
-    public function social(): HasOne
-    {
-        return $this->hasOne(UserSocial::class, 'user_id', 'id');
-    }
-
-    /**
-     * @return HasManyThrough
-     */
-    public function addresses(): HasManyThrough
-    {
-        return $this->hasManyThrough(
-            UserAddress::class,
-            UserProfile::class,
-            'user_id',
-            'user_profile_id',
-            'id',
-            'id'
-        );
-    }
-
-
-    /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
      * @return mixed
