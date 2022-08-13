@@ -36,6 +36,7 @@ class BlogPostUpdateRequest extends FormRequest
             'group' => 'nullable',
             'is_published' => 'required',
             'sort' => 'nullable',
+            'slug' => 'nullable',
         ];
     }
 

@@ -15,7 +15,6 @@ class CreateBlogPostsTable extends Migration
     {
         Schema::create('blog_posts', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned()->index();
             $table->string('title',255);
             $table->string('slug',255)->unique();
             $table->string('group',40)->default('portfolio');
