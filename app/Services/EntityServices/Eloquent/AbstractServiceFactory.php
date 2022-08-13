@@ -49,13 +49,13 @@ abstract class AbstractServiceFactory
          * @var DataTransferObject $dtoObj
          */
 
-        $dtoObj = app()->make($dto, []);
+
 
         if (!$dtoObj instanceof DataTransferObject) {
             throw new LogicException('ENTITY SERVICE FACTORY ERROR!. DTO for ' . $service . ' not found');
         }
 
-        $serviceObj->setDto($dtoObj);
+        $serviceObj->setDto($dto);
 
         return $serviceObj;
     }

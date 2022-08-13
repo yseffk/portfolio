@@ -92,9 +92,9 @@ abstract class EntityAbstractService
     }
 
     /**
-     * @param DataTransferObject $dto
+     * @param  $dto
      */
-    public function setDto(DataTransferObject $dto): void
+    public function setDto($dto): void
     {
         dd($dto);
         $this->dto = $dto;
