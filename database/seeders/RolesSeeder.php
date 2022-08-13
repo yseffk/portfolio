@@ -20,26 +20,26 @@ class RolesSeeder extends Seeder
                 'guard_name' => 'api',
                 'allow_for_public' => 0,
             ],
-            [
-                'name' => 'client_manager',
-                'guard_name' => 'api',
-                'allow_for_public' => 0,
-            ],
-            [
-                'name' => 'seo_manager',
-                'guard_name' => 'api',
-                'allow_for_public' => 0,
-            ],
-            [
-                'name' => 'content_manager',
-                'guard_name' => 'api',
-                'allow_for_public' => 0,
-            ],
-            [
-                'name' => 'customer',
-                'guard_name' => 'api',
-                'allow_for_public' => 1,
-            ],
+//            [
+//                'name' => 'client_manager',
+//                'guard_name' => 'api',
+//                'allow_for_public' => 0,
+//            ],
+//            [
+//                'name' => 'seo_manager',
+//                'guard_name' => 'api',
+//                'allow_for_public' => 0,
+//            ],
+//            [
+//                'name' => 'content_manager',
+//                'guard_name' => 'api',
+//                'allow_for_public' => 0,
+//            ],
+//            [
+//                'name' => 'customer',
+//                'guard_name' => 'api',
+//                'allow_for_public' => 1,
+//            ],
         ];
         DB::table('roles')->insert($roles);
     }
