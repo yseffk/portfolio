@@ -173,6 +173,7 @@ class BlogPostController extends BaseController
         $data = $request->validated();
         $data['group'] = 'portfolio';
         $data['slug'] = Str::slug($data['title']);
+        $data['user_id'] = 1;
         return new JsonResponse(
             $this->appServices()
                 ->entity()
