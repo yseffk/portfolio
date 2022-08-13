@@ -19,10 +19,8 @@ abstract class EntityAbstractService
      */
     private ServicesApp $servicesApp;
 
-    /**
-     * @var DataTransferObject
-     */
-    protected DataTransferObject $dto;
+
+    protected  $dto;
 
     /**
      * @var Model
