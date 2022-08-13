@@ -114,7 +114,7 @@ class BlogPostController extends BaseController
      *     @OA\RequestBody(
      *       @OA\JsonContent(
      *          type="object",
-     *          required={"title", "group", "is_published", "sort"},
+     *          required={"title", "is_published", "sort"},
      *          @OA\Property(
      *              property="title",
      *              type="string",
@@ -171,6 +171,7 @@ class BlogPostController extends BaseController
     {
         $data = $request->validated();
         $data['group'] = 'portfolio';
+        dd($data);
         return new JsonResponse(
             $this->appServices()
                 ->entity()
