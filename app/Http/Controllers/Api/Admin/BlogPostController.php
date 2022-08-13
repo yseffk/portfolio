@@ -171,7 +171,6 @@ class BlogPostController extends BaseController
     {
         $data = $request->validated();
         $data['group'] = 'portfolio';
-        dd($data);
         return new JsonResponse(
             $this->appServices()
                 ->entity()

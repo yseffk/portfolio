@@ -40,7 +40,7 @@ abstract class EntityAbstractService
          * @var Model $model
          */
         $dto = $this->prepareDtoData(new $this->dto($arguments));
-
+dd($dto);
         $model = $this->repository()->create($dto->toArray());
 
         return $model;
