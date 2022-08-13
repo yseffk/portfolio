@@ -16,6 +16,7 @@ use App\Services\EntityServices\Eloquent\User\UseCase\EntityUserService;
 /**
  * @method BlogInstance blog()
  * @method EntityUserService user()
+ * @method EntityUserRoleService role()
  */
 class EntityInstance extends AbstractInstance
 {
@@ -26,6 +27,10 @@ class EntityInstance extends AbstractInstance
         'user' => [
             'class' => EntityUserService::class,
             'dto' => UserDto::class,
+        ],
+        'role' => [
+            'class' => EntityUserRoleService::class,
+            'dto' => UserRoleDto::class,
         ],
 
     ];
