@@ -39,6 +39,7 @@ Route::group($authGroupData, function () {
     Route::post('/login', ['uses' => 'LoginController@login', 'as' => 'auth.login', 'middleware' => 'guest']);
     Route::post('/logout', ['uses' => 'LoginController@logout', 'as' => 'auth.logout', 'middleware' => 'jwt.auth']);
     Route::post('/refresh', ['uses' => 'LoginController@refresh', 'as' => 'auth.refresh', 'middleware' => 'jwt.auth']);
+    Route::post('/me', ['uses' => 'LoginController@me', 'as' => 'auth.me', 'middleware' => 'jwt.auth']);
     Route::post('/register', ['uses' => 'RegisterController@register', 'as' => 'auth.register', 'middleware' => 'guest']);
 });
 

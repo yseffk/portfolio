@@ -197,6 +197,37 @@ class LoginController extends BaseController
         );
     }
 
+      /**
+     * @Route("/api/auth/me", methods={"GET"})
+     *
+     * @OA\Get (
+     *     tags={"Auth"},
+     *     path="/api/auth/me",
+     *     summary="User auth data",
+     *     @OA\Response(
+     *       response="200",
+     *       description="User.",
+     *       @OA\JsonContent(
+     *       ),
+     *     ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Invalid request"
+     *      ),
+     * )
+     *
+     * @return JsonResponse
+     */
+    public function me(): JsonResponse
+    {
+        return new JsonResponse(
+            $this->appServices()
+                ->entity()
+                ->user()
+            ->authUser()
+        );
+    }
+
 
 
 }
