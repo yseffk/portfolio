@@ -39,7 +39,6 @@ abstract class EntityAbstractService
          * @var DataTransferObject $dto
          * @var Model $model
          */
-        dd($this->dto);
         $dto = $this->prepareDtoData(new $this->dto($arguments));
         $model = $this->repository()->create($dto->toArray());
 
@@ -97,6 +96,7 @@ abstract class EntityAbstractService
      */
     public function setDto(DataTransferObject $dto): void
     {
+        dd($dto);
         $this->dto = $dto;
     }
 
