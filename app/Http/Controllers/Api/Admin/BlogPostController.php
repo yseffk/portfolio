@@ -7,6 +7,7 @@ use App\Http\Requests\BlogPostUpdateRequest;
 use App\Services\EntityServices\Eloquent\AbstractServiceFactory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 /**
  * Class BlogPostController
@@ -171,6 +172,7 @@ class BlogPostController extends BaseController
     {
         $data = $request->validated();
         $data['group'] = 'portfolio';
+        $data['slug'] = Str::slug($data['title']);
         return new JsonResponse(
             $this->appServices()
                 ->entity()
