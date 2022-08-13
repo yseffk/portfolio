@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
 
 //        \App\Models\BlogItem::factory(100)->create();
 
-        $this->call(BlogItemAttachmentSeeder::class);
+//        $this->call(BlogItemAttachmentSeeder::class);
 
 //        \App\Models\BlogPost::factory(2)
 //            ->state(new Sequence(
