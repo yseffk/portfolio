@@ -64,7 +64,7 @@ Route::group($blogShowGroupData, function () {
 
 Route::group($adminBlogGroupData, function () {
     Route::resource('posts', 'BlogPostController')
-        ->except('edit', 'create', 'index')
+        ->except('edit', 'create')
         ->names('blog.admin.posts');
 
     Route::resource('items', 'BlogItemController')
