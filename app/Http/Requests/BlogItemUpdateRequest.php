@@ -32,7 +32,6 @@ class BlogItemUpdateRequest extends FormRequest
         return [
             'post_id' => 'nullable|exists:\App\Models\BlogPost,id',
             'title' => 'required|min:3|max:250',
-            'is_free' => 'required',
             'is_published' => 'required',
             'sort' => 'nullable',
         ];

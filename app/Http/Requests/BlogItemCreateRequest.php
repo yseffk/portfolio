@@ -32,13 +32,9 @@ class BlogItemCreateRequest extends FormRequest
         return [
             'post_id' => 'required|exists:\App\Models\BlogPost,id',
             'title' => 'required|min:3|max:250',
-            'is_free' => 'required|numeric',
             'is_published' => 'required|numeric',
             'brief_content' => 'nullable|string',
             'raw_content' => 'nullable|string',
-            'external_url' => 'nullable|string',
-            'duration' => 'nullable|numeric',
-            'sort' => 'nullable|numeric',
         ];
     }
 

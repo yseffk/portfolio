@@ -15,7 +15,7 @@ class BlogItemRepository extends BaseRepository
     BlogItemRepositoryInterface,
     EloquentRepositoryInterface
 {
-    const SORTABLE = ['id', 'sort', 'created_at'];
+    const SORTABLE = ['id', 'sort', 'published_at'];
 
     /**
      * UserRepository constructor.

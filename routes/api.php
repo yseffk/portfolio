@@ -41,3 +41,37 @@ Route::group($authGroupData, function () {
     Route::post('/refresh', ['uses' => 'LoginController@refresh', 'as' => 'auth.refresh', 'middleware' => 'jwt.auth']);
     Route::post('/register', ['uses' => 'RegisterController@register', 'as' => 'auth.register', 'middleware' => 'guest']);
 });
+
+
+Route::group($blogShowGroupData, function () {
+
+    Route::resource('posts', 'BlogPostController')
+        ->only(
+            'show' // return post by slug && item collection
+        )->names('blog.posts');
+
+    Route::resource('items', 'BlogItemController')
+        ->only(
+            'show' // return item by id && attach collection
+        )->names('blog.items');
+
+    Route::resource('item-attachments', 'BlogItemAttachmentController')
+        ->only(
+            'show' // return attach by id
+        )->names('blog.item-attachments');
+
+});
+
+Route::group($adminBlogGroupData, function () {
+    Route::resource('posts', 'BlogPostController')
+        ->except('edit', 'create', 'index')
+        ->names('blog.admin.posts');
+
+    Route::resource('items', 'BlogItemController')
+        ->except('edit', 'create')
+        ->names('blog.admin.items');
+
+    Route::resource('item-attachments', 'BlogItemAttachmentController')
+        ->except('edit', 'create')
+        ->names('blog.admin.item-attachments');
+});

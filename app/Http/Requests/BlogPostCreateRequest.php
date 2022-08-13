@@ -33,7 +33,7 @@ class BlogPostCreateRequest extends FormRequest
     {
         return [
             'title' => 'required|min:3|max:250',
-            'group' => ['required', Rule::in(BlogPost::GROUPS)],
+            'group' => 'nullable',
             'is_published' => 'required',
             'sort' => 'nullable',
         ];
@@ -48,8 +48,7 @@ class BlogPostCreateRequest extends FormRequest
             'title.required' => ':attribute не може бути пустим',
             'title.min' => ':attribute не може бути менше :min символів',
             'title.max' => ':attribute не може бути більше :max символів',
-            'group.required' => ':attribute не може бути пустою',
-            'group.in' => ':attribute недопустима',
+
         ];
 
     }

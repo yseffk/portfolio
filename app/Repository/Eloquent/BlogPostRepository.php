@@ -61,20 +61,11 @@ class BlogPostRepository extends BaseRepository
                 ['slug', '=', $slug],
                 ['is_published', '=', 1],
             ])
-            ->with([
-                'items' =>
-                    function ($query) {
-                        $items = $query
-                            ->where([
-                                ['is_published', '=', 1],
-                            ])
-//                            ->with(['latestAudio','latestVideo','latestText','latestNotes','latestImg'])
-                            ->orderBy('sort');
-                        return $items;
-                    },
-            ])
-            ->get();
-
+            ->first();
+        if(!$data){
+            $message = get_class($this->model) . " with slug $slug doesn't exist.";
+            $this->exception($message, 404);
+        }
         return collect($data);
     }
 

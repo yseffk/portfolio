@@ -33,7 +33,6 @@ class BlogItemAttachmentUpdateRequest extends FormRequest
     {
         return [
             'blog_item_id' => 'required|exists:App\Models\BlogItem,id',
-            'type' => ['required', Rule::in(BlogItemAttachment::TYPES),],
             'source' => ['required', Rule::in(BlogItemAttachment::SOURCES),],
             'file_path' => 'required',
         ];
@@ -48,9 +47,7 @@ class BlogItemAttachmentUpdateRequest extends FormRequest
 
             'blog_item_id.required' => ':attribute не може бути пустим',
             'blog_item_id.exists' => ':attribute не знайдено',
-            'type.required' => ':attribute не може бути пустим',
             'source.required' => ':attribute не може бути пустим',
-            'type.in' => ':attribute недопустимий',
             'source.in' => ':attribute недопустимий',
             'file_path.required' => ':attribute не може бути пустим',
         ];

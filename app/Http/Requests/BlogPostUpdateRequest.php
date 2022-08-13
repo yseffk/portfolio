@@ -33,7 +33,7 @@ class BlogPostUpdateRequest extends FormRequest
     {
         return [
             'title' => 'required|min:3|max:250',
-            'group' => ['required', Rule::in(BlogPost::GROUPS)],
+            'group' => 'nullable',
             'is_published' => 'required',
             'sort' => 'nullable',
         ];

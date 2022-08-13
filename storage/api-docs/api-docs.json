@@ -13,6 +13,1006 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/api/admin/blog/item-attachments": {
+            "get": {
+                "tags": [
+                    "Admin Content Attachment"
+                ],
+                "summary": "Get Content Item Attachments  whith pagination",
+                "description": "Display a listing of the resource.",
+                "operationId": "ce92a8297ce6c06713ef90b9a1011135",
+                "parameters": [
+                    {
+                        "name": "pagination",
+                        "in": "query",
+                        "description": "Need pagination",
+                        "required": false,
+                        "example": "1"
+                    },
+                    {
+                        "name": "blog_item_id",
+                        "in": "query",
+                        "description": "filtering by 'Content Item ID",
+                        "required": false,
+                        "example": "1"
+                    },
+                    {
+                        "name": "source",
+                        "in": "query",
+                        "description": "filtering by source. enum('LINK','FILE') ",
+                        "required": false,
+                        "example": "LINK"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "required": false,
+                        "example": "1"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Per page limit",
+                        "required": false,
+                        "example": "15"
+                    },
+                    {
+                        "name": "order_by",
+                        "in": "query",
+                        "description": "Sort  list criteria. Allowed fields are: id, sort, created_at. Prepend '-' sign to revert order",
+                        "required": false,
+                        "example": "-id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Admin Content Attachment"
+                ],
+                "summary": "Create Content Item Attachment.",
+                "operationId": "30d9de4fdc672922d49f8453ad8863c0",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "blog_item_id",
+                                    "source",
+                                    "file_path"
+                                ],
+                                "properties": {
+                                    "blog_item_id": {
+                                        "description": "blogItem ID",
+                                        "type": "integer",
+                                        "nullable": false
+                                    },
+                                    "source": {
+                                        "description": "Item Attach Source.  enum('LINK','FILE')",
+                                        "type": "integer",
+                                        "nullable": false
+                                    },
+                                    "file_path": {
+                                        "type": "string",
+                                        "format": "binary",
+                                        "nullable": false
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Request validation error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Validation information.",
+                                            "type": "string",
+                                            "example": "The given data was invalid.",
+                                            "nullable": false
+                                        },
+                                        "errors": {
+                                            "description": "Object with all errors.",
+                                            "type": "object",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/blog/item-attachments/{id}": {
+            "get": {
+                "tags": [
+                    "Admin Content Attachment"
+                ],
+                "summary": "Show Content item Attachment.",
+                "description": "Display the specified resource.",
+                "operationId": "f9339ba254056965b861fe0b07d9909e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "itemAttachment ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Admin Content Attachment"
+                ],
+                "summary": "Delete Content item Attachment by ID.",
+                "description": "Display the specified resource.",
+                "operationId": "c7426e92131138b97986d66c332fdb25",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "itemAttachment ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/blog/item-attachments/{id}?_method=PUT": {
+            "post": {
+                "tags": [
+                    "Admin Content Attachment"
+                ],
+                "summary": "Update Content Item Attachment by ID.",
+                "operationId": "a95f24726c6cf997473aaf2fcb0d771a",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "blog_item_id",
+                                    "source",
+                                    "file_path"
+                                ],
+                                "properties": {
+                                    "blog_item_id": {
+                                        "description": "Content Item ID",
+                                        "type": "integer",
+                                        "nullable": false
+                                    },
+                                    "source": {
+                                        "description": "Item Attach Source.  enum('LINK','FILE')",
+                                        "type": "integer",
+                                        "nullable": false
+                                    },
+                                    "file_path": {
+                                        "type": "string",
+                                        "format": "binary",
+                                        "nullable": false
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Model not found"
+                    },
+                    "422": {
+                        "description": "Request validation error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Validation information.",
+                                            "type": "string",
+                                            "example": "The given data was invalid.",
+                                            "nullable": false
+                                        },
+                                        "errors": {
+                                            "description": "Object with all errors.",
+                                            "type": "object",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/blog/items": {
+            "get": {
+                "tags": [
+                    "Admin Content"
+                ],
+                "summary": "Get Content Items  whith pagination",
+                "description": "Display a listing of the resource.",
+                "operationId": "79d603ec9bd2fd1028541854025e2cd3",
+                "parameters": [
+                    {
+                        "name": "pagination",
+                        "in": "query",
+                        "description": "Need pagination",
+                        "required": false,
+                        "example": "1"
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "filtering by title ",
+                        "required": false,
+                        "example": "Lorem.."
+                    },
+                    {
+                        "name": "is_published",
+                        "in": "query",
+                        "description": "filtering by 'is published' flag",
+                        "required": false,
+                        "example": "1"
+                    },
+                    {
+                        "name": "is_free",
+                        "in": "query",
+                        "description": "filtering by 'is free' flag",
+                        "required": false,
+                        "example": "1"
+                    },
+                    {
+                        "name": "post_id",
+                        "in": "query",
+                        "description": "filtering by 'Month block item' ID",
+                        "required": false,
+                        "example": "1"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "required": false,
+                        "example": "1"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Per page limit",
+                        "required": false,
+                        "example": "15"
+                    },
+                    {
+                        "name": "order_by",
+                        "in": "query",
+                        "description": "Sort  list criteria. Allowed fields are: id, sort, created_at. Prepend '-' sign to revert order",
+                        "required": false,
+                        "example": "-id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Admin Content"
+                ],
+                "summary": "Create Content item.",
+                "operationId": "ad260c43f2505d2b3077d406f53f647c",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "post_id",
+                                    "title",
+                                    "is_published",
+                                    "sort"
+                                ],
+                                "properties": {
+                                    "post_id": {
+                                        "description": "Type item ID",
+                                        "type": "integer",
+                                        "nullable": false
+                                    },
+                                    "title": {
+                                        "description": "Item title",
+                                        "type": "string",
+                                        "nullable": false
+                                    },
+                                    "is_published": {
+                                        "description": "Item published flag",
+                                        "type": "integer",
+                                        "nullable": false
+                                    },
+                                    "sort": {
+                                        "description": "sort",
+                                        "type": "integer",
+                                        "nullable": false
+                                    },
+                                    "brief_content": {
+                                        "description": "",
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "raw_content": {
+                                        "description": "",
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Request validation error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Validation information.",
+                                            "type": "string",
+                                            "example": "The given data was invalid.",
+                                            "nullable": false
+                                        },
+                                        "errors": {
+                                            "description": "Object with all errors.",
+                                            "type": "object",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/blog/items/{item}": {
+            "get": {
+                "tags": [
+                    "Admin Content"
+                ],
+                "summary": "Show Content item.",
+                "description": "Display the specified resource.",
+                "operationId": "2e401b5ec6a35a0e957d628345f319e3",
+                "parameters": [
+                    {
+                        "name": "item",
+                        "in": "path",
+                        "description": "item ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Admin Content"
+                ],
+                "summary": "Delete Content item by ID",
+                "operationId": "5eaf877cb50fee6f8ec78891fcad1c2b",
+                "parameters": [
+                    {
+                        "name": "item",
+                        "in": "path",
+                        "description": "item ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/blog/items/{item}?_method=PUT": {
+            "post": {
+                "tags": [
+                    "Admin Content"
+                ],
+                "summary": "Update Content item by ID.",
+                "operationId": "a61ea8a45389ac6cda0473abacf1021e",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "post_id",
+                                    "title",
+                                    "is_published",
+                                    "sort"
+                                ],
+                                "properties": {
+                                    "post_id": {
+                                        "description": "Type item ID",
+                                        "type": "integer",
+                                        "nullable": false
+                                    },
+                                    "title": {
+                                        "description": "Item title",
+                                        "type": "string",
+                                        "nullable": false
+                                    },
+                                    "is_published": {
+                                        "description": "Item published flag",
+                                        "type": "integer",
+                                        "nullable": false
+                                    },
+                                    "sort": {
+                                        "description": "sort",
+                                        "type": "integer",
+                                        "nullable": false
+                                    },
+                                    "brief_content": {
+                                        "description": "",
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "raw_content": {
+                                        "description": "",
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Model not found"
+                    },
+                    "422": {
+                        "description": "Request validation error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Validation information.",
+                                            "type": "string",
+                                            "example": "The given data was invalid.",
+                                            "nullable": false
+                                        },
+                                        "errors": {
+                                            "description": "Object with all errors.",
+                                            "type": "object",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/blog/posts": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get posts  data whith pagination",
+                "description": "Display a listing of the resource.",
+                "operationId": "06f217e7801c10470d79c412475c3ba1",
+                "parameters": [
+                    {
+                        "name": "pagination",
+                        "in": "query",
+                        "description": "Need pagination",
+                        "required": false,
+                        "example": "1"
+                    },
+                    {
+                        "name": "is_published",
+                        "in": "query",
+                        "description": "filtering by 'is published' flag",
+                        "required": false,
+                        "example": "1"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "required": false,
+                        "example": "1"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Per page limit (default 12)",
+                        "required": false,
+                        "example": "15"
+                    },
+                    {
+                        "name": "order_by",
+                        "in": "query",
+                        "description": "Sort  list criteria. Allowed fields are: id, sort, created_at. Prepend '-' sign to revert order",
+                        "required": false,
+                        "example": "-id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Create post.",
+                "operationId": "cc69d21b8ad8cff4671efdde22115371",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "group",
+                                    "is_published",
+                                    "sort"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "description": "Post title",
+                                        "type": "string",
+                                        "nullable": false
+                                    },
+                                    "is_published": {
+                                        "description": "Post published flag",
+                                        "type": "integer",
+                                        "nullable": false
+                                    },
+                                    "sort": {
+                                        "description": "sort",
+                                        "type": "integer",
+                                        "nullable": false
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Request validation error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Validation information.",
+                                            "type": "string",
+                                            "example": "The given data was invalid.",
+                                            "nullable": false
+                                        },
+                                        "errors": {
+                                            "description": "Object with all errors.",
+                                            "type": "object",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/blog/posts/{id}": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Show post.",
+                "description": "Display the specified resource.",
+                "operationId": "51d8f99da8c1090fb2653507c17debf9",
+                "parameters": [
+                    {
+                        "name": "post",
+                        "in": "path",
+                        "description": "post id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/blog/posts/{post}?_method=PUT": {
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update Month block item.",
+                "operationId": "1a35b0227354448e56284b3442d78cc1",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "is_published",
+                                    "sort"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "description": "Post title",
+                                        "type": "string",
+                                        "nullable": false
+                                    },
+                                    "is_published": {
+                                        "description": "Post published flag",
+                                        "type": "integer",
+                                        "nullable": false
+                                    },
+                                    "sort": {
+                                        "description": "sort",
+                                        "type": "integer",
+                                        "nullable": false
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Model not found"
+                    },
+                    "422": {
+                        "description": "Request validation error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Validation information.",
+                                            "type": "string",
+                                            "example": "The given data was invalid.",
+                                            "nullable": false
+                                        },
+                                        "errors": {
+                                            "description": "Object with all errors.",
+                                            "type": "object",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/blog/posts/{post}": {
+            "delete": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Delete post ID",
+                "operationId": "9e0078a6b01af62e8fc20e417298ecb5",
+                "parameters": [
+                    {
+                        "name": "post",
+                        "in": "path",
+                        "description": "post ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
         "/api/auth/login": {
             "post": {
                 "tags": [
@@ -118,13 +1118,13 @@
                 }
             }
         },
-        "/api/auth/logout/": {
+        "/api/auth/logout": {
             "post": {
                 "tags": [
                     "Auth"
                 ],
                 "summary": "User logout",
-                "operationId": "1b8b79a9f8a5ef0fe6208edef2ff037e",
+                "operationId": "d4127fb36e01f115013ba59cd3676ec9",
                 "responses": {
                     "200": {
                         "description": "User successfully signed out.",
@@ -150,13 +1150,13 @@
                 }
             }
         },
-        "/api/auth/refresh/": {
+        "/api/auth/refresh": {
             "post": {
                 "tags": [
                     "Auth"
                 ],
                 "summary": "User refresh JWT token",
-                "operationId": "d058c6d181680358063c1f10b88e8ad8",
+                "operationId": "3e794c7cdc846e47c40f867ba8070652",
                 "responses": {
                     "200": {
                         "description": "User is successfully logged in.",
@@ -283,6 +1283,160 @@
                                     "type": "object"
                                 }
                             }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/blog/item-attachments/{id}": {
+            "get": {
+                "tags": [
+                    "showing"
+                ],
+                "summary": "Get item-attachment collection by id",
+                "operationId": "be93e21daa30ffca585f0bdfa5aaf70c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Item-attachment id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Model not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/blog/items/{id}": {
+            "get": {
+                "tags": [
+                    "showing"
+                ],
+                "summary": "Get content item and attachments",
+                "operationId": "b3a347cf49a05e4c3f433c842ab6607c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Item id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Model not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/blog/posts/blog": {
+            "get": {
+                "tags": [
+                    "showing"
+                ],
+                "summary": "Get blog items published data by slug.  ",
+                "operationId": "be191fbbcc2aba33eac5849a47186efd",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "required": false,
+                        "example": "1"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Per page limit",
+                        "required": false,
+                        "example": "15"
+                    },
+                    {
+                        "name": "order_by",
+                        "in": "query",
+                        "description": "Sort  list criteria. Allowed fields are: id, sort, published_at. Prepend '-' sign to revert order",
+                        "required": false,
+                        "example": "-id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Model not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/blog/posts/gallery": {
+            "get": {
+                "tags": [
+                    "showing"
+                ],
+                "summary": "Get gallery items published data by slug.  ",
+                "operationId": "72ae4218254e140cd9d5f8834cc5fe01",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "required": false,
+                        "example": "1"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Per page limit",
+                        "required": false,
+                        "example": "15"
+                    },
+                    {
+                        "name": "order_by",
+                        "in": "query",
+                        "description": "Sort  list criteria. Allowed fields are: id, sort, published_at. Prepend '-' sign to revert order",
+                        "required": false,
+                        "example": "-id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Model not found",
+                        "content": {
+                            "application/json": {}
                         }
                     }
                 }
