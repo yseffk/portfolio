@@ -18,7 +18,7 @@ $adminBlogGroupData = [
     'namespace' => 'App\Http\Controllers\Api\Admin',
     'prefix' => 'admin/blog',
     //'middleware' => 'permission:admin'
-    //'middleware' => 'jwt.auth'
+    'middleware' => 'jwt.auth'
 ];
 
 $authGroupData = [
