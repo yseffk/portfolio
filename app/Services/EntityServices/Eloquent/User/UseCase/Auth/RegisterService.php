@@ -50,18 +50,18 @@ class RegisterService extends EntityUserAbstractService
                 ->user()
                 ->create($userArguments);
 
-            $userProfileArguments = [
-                'user_id' => $user->id,
-                'first_name' => $dto->first_name,
-                'last_name' => $dto->last_name,
-                'phone' => $dto->phone
-            ];
-
-            $this->abstract()
-                ->entity()
-                ->user()
-                ->profile()
-                ->create($userProfileArguments);
+//            $userProfileArguments = [
+//                'user_id' => $user->id,
+//                'first_name' => $dto->first_name,
+//                'last_name' => $dto->last_name,
+//                'phone' => $dto->phone
+//            ];
+//
+//            $this->abstract()
+//                ->entity()
+//                ->user()
+//                ->profile()
+//                ->create($userProfileArguments);
 
             $this->abstract()
                 ->entity()
