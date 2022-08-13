@@ -68,7 +68,7 @@ class RegisterService extends EntityUserAbstractService
                 ->role()
                 ->setForUser($user->id, 'admin');
 
-            $user->load('profile');
+//            $user->load('profile');
 
             $token = $this->getTokenFromUser($user);
             $res = $this->tokenResponse($token);
