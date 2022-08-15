@@ -19,10 +19,7 @@ class CreateBlogItemsTable extends Migration
             $table->text('brief_content')->nullable();
             $table->longText('raw_content')->nullable();
             $table->longText('html_content')->nullable();
-            $table->boolean('is_free')->default(false);
             $table->boolean('is_published')->default(false)->index();
-            $table->string('external_url',255)->nullable();
-            $table->integer('duration')->default(0);
             $table->integer('sort')->default(0);
             $table->timestamp('published_at')->nullable();
             $table->timestamps();

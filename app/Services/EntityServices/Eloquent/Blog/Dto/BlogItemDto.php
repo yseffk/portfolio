@@ -31,10 +31,6 @@ class BlogItemDto extends DataTransferObject
      */
     public $raw_content;
 
-    /**
-     * @var
-     */
-    public $is_free;
 
     /**
      * @var
@@ -44,12 +40,7 @@ class BlogItemDto extends DataTransferObject
     /**
      * @var
      */
-    public $external_url;
-
-    /**
-     * @var
-     */
-    public $duration = 0;
+    public $published_at;
 
     /**
      * @var
