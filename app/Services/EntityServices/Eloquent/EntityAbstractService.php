@@ -39,7 +39,7 @@ abstract class EntityAbstractService
          */
         $dto = $this->prepareDtoData(new $this->dto($arguments));
         $model = $this->repository()->create($dto->toArray());
-
+        $this->dto = $dto;
         return $model;
     }
 
@@ -58,7 +58,7 @@ abstract class EntityAbstractService
         $dto = $this->prepareDtoData(new $this->dto($arguments));
 
         $model = $this->repository()->update($id, $dto->toArray());
-
+        $this->dto = $dto;
         return $model;
     }
 
