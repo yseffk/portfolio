@@ -36,7 +36,7 @@ class EntityBlogItemService extends EntityAbstractService implements EntityServi
     {
         $model = parent::create($arguments);
 
-        if (is_int($this->dto->post_id)) {
+        if (!empty($this->dto->post_id)) {
             $data = [
                 'blog_post_id' => $this->dto->post_id,
                 'blog_item_id' => $model->id,
