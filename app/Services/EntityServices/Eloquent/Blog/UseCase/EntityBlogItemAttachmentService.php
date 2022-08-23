@@ -51,6 +51,10 @@ class EntityBlogItemAttachmentService extends EntityAbstractService implements E
         $this->entityModel = $this->repository()->find($id);
 
         foreach ($dto as $key=>$value){
+            if($key == 'file_path' && !($value instanceof UploadedFile))
+            {
+               continue;
+            }
             $this->entityModel->{$key} = $value;
         }
 
