@@ -44,6 +44,17 @@ class BlogItem extends Model
         'deleted_at' => 'datetime',
     ];
 
+    protected $appends = [
+        'attach_counter',
+    ];
+    /**
+     * @return int
+     *
+     */
+    public function getAttachCounterAttribute(): int
+    {
+        return (int) $this->attachments()->count('id');
+    }
     public function posts()
     {
         return $this->belongsToMany(BlogPost::class, 'blog_post_blog_items', 'blog_item_id', 'blog_post_id');
