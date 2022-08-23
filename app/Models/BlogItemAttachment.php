@@ -32,10 +32,32 @@ class BlogItemAttachment extends Model
         'file_path'
     ];
 
+    /**
+     * Append custom attributes.
+     * @var string[]
+     */
+    protected $appends = [
+        'file_url',
+    ];
+
     public function item()
     {
-
         return $this->belongsTo(BlogItem::class, 'blog_item_id', 'id');
+    }
 
+    /**
+     * @return null|string
+     *
+     */
+    public function getFileUrlAttribute(): array
+    {
+        $return  = null;
+        if($this->type == 'LINK'){
+            $return = $this->file_path;
+        }else{
+            $return = url($this->file_path);
+        }
+
+        return $return;
     }
 }
