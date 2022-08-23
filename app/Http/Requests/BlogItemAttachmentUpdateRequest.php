@@ -34,7 +34,7 @@ class BlogItemAttachmentUpdateRequest extends FormRequest
         return [
             'blog_item_id' => 'required|exists:App\Models\BlogItem,id',
             'source' => ['required', Rule::in(BlogItemAttachment::SOURCES),],
-            'file_path' => 'required',
+            'file_path' => 'nullable',
         ];
     }
 
