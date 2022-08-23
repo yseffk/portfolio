@@ -52,7 +52,7 @@ class BlogItemAttachment extends Model
     public function getFileUrlAttribute(): null|string
     {
         $return  = null;
-        if($this->type == 'LINK'){
+        if($this->type == 'LINK' || empty($this->file_path)){
             $return = $this->file_path;
         }else{
             $return = url($this->file_path);
