@@ -7,6 +7,7 @@ use App\Repository\EloquentRepositoryInterface;
 use App\Services\EntityServices\Eloquent\EntityAbstractService;
 use App\Services\EntityServices\Eloquent\EntityServiceInterface;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\HTTP\UploadedFile;
 
 /**
  * Class EntityBlogItemAttachmentService
@@ -80,8 +81,11 @@ class EntityBlogItemAttachmentService extends EntityAbstractService implements E
 
     private function saveFile()
     {
-        if($this->entityModel->source!=='FILE'){
-            return true;
+        if($this->entityModel->source!=='FILE'
+            ||
+           ($this->entityModel->file_path instanceof UploadedFile) === false
+        ){
+            return false;
         }
         $uploadedFileObj = $this->entityModel->file_path;
 
@@ -114,7 +118,7 @@ class EntityBlogItemAttachmentService extends EntityAbstractService implements E
                 break;
 
         }
-
+        return true;
     }
 
     private function deleteFile($file_path)
