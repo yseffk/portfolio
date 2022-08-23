@@ -33,10 +33,8 @@ class BlogItem extends Model
         'title',
         'brief_content',
         'raw_content',
-        'is_free',
         'is_published',
-        'external_url',
-        'duration',
+        'published_at',
         'sort'
     ];
 
