@@ -34,6 +34,8 @@ class BlogItemUpdateRequest extends FormRequest
             'title' => 'required|min:3|max:250',
             'is_published' => 'required',
             'sort' => 'nullable',
+            'brief_content' => 'nullable|string',
+            'raw_content' => 'nullable|string',
         ];
     }
 
