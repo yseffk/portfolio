@@ -39,7 +39,7 @@ class EntityBlogItemAttachmentService extends EntityAbstractService implements E
         $this->entityModel = parent::create($arguments);
         $this->entityModel->file_path = $this->dto->file_path;
         $this->saveFile();
-
+        $this->entityModel->save();
         return $this->entityModel;
 
     }
