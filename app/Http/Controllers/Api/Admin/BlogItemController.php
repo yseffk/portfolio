@@ -429,6 +429,9 @@ class BlogItemController extends BaseController
      *     tags={"Admin Content"},
      *     path="/api/admin/blog/items/{id}/change-publish",
      *     summary="change item 'is_published' flag",
+     *     security={
+     *         {"bearer": {}}
+     *     },
      *     @OA\Parameter(
      *         name="id",
      *         description="Item id",
