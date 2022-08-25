@@ -455,7 +455,12 @@ class BlogItemController extends BaseController
      */
     public function changePublish($id): JsonResponse
     {
-        $data = $this->BlogItemRepository->find($id);
+        $data = $this->appServices()
+            ->entity()
+            ->blog()
+            ->item()
+            ->repository()
+            ->find($id);
         $data->is_published = ($data->is_published==1) ? 0 : 1;
         $data->save();
         return new JsonResponse($data);
