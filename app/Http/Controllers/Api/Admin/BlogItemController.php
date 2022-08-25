@@ -421,4 +421,43 @@ class BlogItemController extends BaseController
                 ->delete($id)
         );
     }
+
+    /**
+     * @Route("/api/admin/blog/items/{id}/change-publish", methods={"GET"}, requirements={"id"})
+     *
+     * @OA\Get (
+     *     tags={"Admin Content"},
+     *     path="/api/admin/blog/items/{id}/change-publish",
+     *     summary="change item 'is_published' flag",
+     *     @OA\Parameter(
+     *         name="id",
+     *         description="Item id",
+     *         in="path",
+     *         required=true
+     *     ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *     @OA\Response(
+     *          response=404,
+     *          description="Model not found",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     * )
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function changePublish($id): JsonResponse
+    {
+        $data = $this->BlogItemRepository->find($id);
+        $data->is_published = ($data->is_published==1) ? 0 : 1;
+        $data->save();
+        return new JsonResponse($data);
+    }
 }

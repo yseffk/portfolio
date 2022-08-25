@@ -55,7 +55,7 @@ Route::group($blogShowGroupData, function () {
         ->only(
             'show' // return item by id && attach collection
         )->names('blog.items');
-
+    Route::get('/items/{id}/change-publish', ['uses' => 'BlogItemController@changePublish', 'as' => 'blog.items.change-publish', 'middleware' => 'jwt.auth']);
     Route::resource('item-attachments', 'BlogItemAttachmentController')
         ->only(
             'show' // return attach by id
