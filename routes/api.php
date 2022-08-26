@@ -57,7 +57,8 @@ Route::group($blogShowGroupData, function () {
         )->names('blog.items');
     Route::resource('item-attachments', 'BlogItemAttachmentController')
         ->only(
-            'show' // return attach by id
+            'show', // return attach by id
+                    'index' // return attach list
         )->names('blog.item-attachments');
 
 });
