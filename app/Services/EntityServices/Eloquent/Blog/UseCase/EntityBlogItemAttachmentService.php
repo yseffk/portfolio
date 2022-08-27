@@ -93,7 +93,7 @@ class EntityBlogItemAttachmentService extends EntityAbstractService implements E
         }
         $uploadedFileObj = $this->entityModel->file_path;
 
-        $fileName = time().'-'.$this->entityModel->type;
+        $fileName = rand(1,999999).'-'.time().'-'.$this->entityModel->type;
 
         $path = $this->entityModel->blog_item_id;
 
