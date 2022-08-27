@@ -38,11 +38,11 @@ class BlogItemAttachmentRepository extends BaseRepository
         if ($query = $filter['query'] ?? false) {
 
             if (($query['type'] ?? false) && in_array($query['type'],BlogItemAttachment::TYPES )) {
-                $collectionBuilder->where('type', '=', (int)$query['type']);
+                $collectionBuilder->where('type', '=', $query['type']);
             }
 
             if (($query['source'] ?? false) && in_array($query['source'],BlogItemAttachment::SOURCES )) {
-                $collectionBuilder->where('source', '=', (int)$query['source']);
+                $collectionBuilder->where('source', '=', $query['source']);
             }
             if ($query['blog_item_id'] ?? false) {
                 $collectionBuilder->where('blog_item_id', '=', (int)$query['blog_item_id']);
