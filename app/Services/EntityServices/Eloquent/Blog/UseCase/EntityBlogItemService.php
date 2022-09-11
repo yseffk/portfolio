@@ -35,7 +35,8 @@ class EntityBlogItemService extends EntityAbstractService implements EntityServi
     public function create(array $arguments): Model
     {
         $model = parent::create($arguments);
-
+        $model->html_content = htmlspecialchars($model->raw_content);
+        $model->save();
         if (!empty($this->dto->post_id)) {
             $data = [
                 'blog_post_id' => $this->dto->post_id,
@@ -47,7 +48,14 @@ class EntityBlogItemService extends EntityAbstractService implements EntityServi
         return $model;
 
     }
+    public function update(int $id, array $arguments): Model
+    {
+        $model = parent::update($id, $arguments);
+        $model->html_content = htmlspecialchars($model->raw_content);
+        $model->save();
 
+        return $model;
+    }
 
     public function repository(): EloquentRepositoryInterface
     {
