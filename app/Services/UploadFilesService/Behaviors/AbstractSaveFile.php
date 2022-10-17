@@ -5,6 +5,8 @@ namespace App\Services\UploadFilesService\Behaviors;
 
 use App\Services\UploadFilesService\Behavior;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Nette\Utils\Image;
 
 /**
  * Class AbstractSaveFile
@@ -53,9 +55,22 @@ class AbstractSaveFile implements Behavior
      */
     public function handle(): string
     {
-        $file = $this->fileName . '.' . $this->uploadedFileObj->getClientOriginalExtension();
+        $max = 1024;
+        $resized = Image::fromFile($this->uploadedFileObj);
+        $width = $resized->getWidth();
+        $height = $resized->getHeight();
 
-        $url = '/' . $this->disc . '/' . $this->uploadedFileObj->storeAs($this->path, $file, $this->disc);
+        if ( $width > $max || $height > $max) {
+            $resized = ($width > $height)
+                ? $resized->resize($max, null)
+                : $resized->resize(null,$max);
+            // Overwrite source photo with the resized one
+
+        }
+
+        $file = $this->path . '/' .$this->fileName . '.' . $this->uploadedFileObj->getClientOriginalExtension();
+        Storage::disk($this->disc)->put($file, $resized);
+        $url = '/' . $this->disc . '/'.  $file;
 
         return $url;
     }
