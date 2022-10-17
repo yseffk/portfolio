@@ -28,7 +28,7 @@ class BlogItemRepository extends BaseRepository
     }
 
 
-    public function getPublishedWithAttachment($id): Collection
+    public function getPublishedWithAttachment($id)
     {
         $data = $this->collection()->where([
             ['id', '=', $id],
@@ -43,7 +43,7 @@ class BlogItemRepository extends BaseRepository
             $this->exception($message, 404);
         }
 
-        return collect($data);
+        return $data;
     }
 
     /**

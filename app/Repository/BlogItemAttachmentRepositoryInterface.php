@@ -17,7 +17,6 @@ interface BlogItemAttachmentRepositoryInterface
     /**
      *
      * @param $id
-     * @return Collection
      */
-    public function getPublished($id): Collection;
+    public function getPublished($id);
 }
