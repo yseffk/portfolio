@@ -54,7 +54,8 @@ class BlogItemController extends BaseController
      */
     public function show($id): JsonResponse
     {
-        $data = $this->BlogItemRepository->find($id)->load('attachments');
+        $data = $this->BlogItemRepository->getPublishedWithAttachment($id)
+            ->load('attachments');
 
         return new JsonResponse($data);
     }

@@ -17,6 +17,6 @@ interface BlogItemRepositoryInterface
      * @param $id
      * @return Collection
      */
-    public function getPublishedWithLatestAttachment($id): Collection;
+    public function getPublishedWithAttachment($id): Collection;
 
 }

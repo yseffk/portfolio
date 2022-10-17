@@ -57,8 +57,22 @@ class EntityBlogItemService extends EntityAbstractService implements EntityServi
         return $model;
     }
 
+    public function delete(int $id): Model
+    {
+        $model = $this->repository()->find($id)->load('attachments');
+        foreach ($model->attachments as $attachment){
+            $this->abstract()
+                ->entity()
+                ->blog()
+                ->itemAttachment()
+                ->delete($attachment->id);
+        }
+        return parent::delete($id);
+    }
+
     public function repository(): EloquentRepositoryInterface
     {
         return $this->BlogItemRepository;
     }
+
 }

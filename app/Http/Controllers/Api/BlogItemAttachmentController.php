@@ -55,7 +55,7 @@ class BlogItemAttachmentController extends BaseController
      */
     public function show($id): JsonResponse
     {
-        $data = $this->BlogItemAttachmentRepository->find($id);
+        $data = $this->BlogItemAttachmentRepository->getPublished($id);
         return new JsonResponse($data);
     }
 
@@ -130,6 +130,7 @@ class BlogItemAttachmentController extends BaseController
                 'blog_item_id' => $request->get('blog_item_id', false),
                 'type' => 'IMG',
                 'source' => $request->get('source', false),
+                'is_published' => 1,
             ],
             'page' => $request->get('page', 1),
             'limit' => $request->get('limit', 15),

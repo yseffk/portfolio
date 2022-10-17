@@ -47,8 +47,28 @@ class BlogItemAttachmentRepository extends BaseRepository
             if ($query['blog_item_id'] ?? false) {
                 $collectionBuilder->where('blog_item_id', '=', (int)$query['blog_item_id']);
             }
+            if ((int)$query['is_published'] ?? false) {
+                $collectionBuilder->whereRelation('item', 'is_published', '=', (int)$query['is_published']);
+            }
 
         }
+    }
+
+    public function getPublished($id): Collection
+    {
+        $data = $this->collection()->where([
+            ['id', '=', $id],
+        ])
+            ->whereRelation('item', 'is_published', '=', 1)
+            ->first();
+
+        if (!$data) {
+            $message = 'Published ' . get_class($this->model) . " with ID $id doesn't exist.";
+
+            $this->exception($message, 404);
+        }
+
+        return collect($data);
     }
 
     /**

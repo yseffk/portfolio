@@ -28,19 +28,19 @@ class BlogItemRepository extends BaseRepository
     }
 
 
-    public function getPublishedWithLatestAttachment($id): Collection
+    public function getPublishedWithAttachment($id): Collection
     {
         $data = $this->collection()->where([
             ['id', '=', $id],
             ['is_published', '=', 1],
         ])
-            ->with(['latestAudio', 'latestVideo', 'latestText', 'latestNotes', 'latestImg'])
-            ->get();
+            ->with(['attachments',])
+            ->first();
 
-        if ($data->isEmpty()) {
+        if (!$data) {
             $message = 'Published ' . get_class($this->model) . " with ID $id doesn't exist.";
 
-            $this->exception($message, 400);
+            $this->exception($message, 404);
         }
 
         return collect($data);
