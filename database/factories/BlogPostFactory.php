@@ -18,7 +18,6 @@ class BlogPostFactory extends Factory
         $created_at = $this->faker->dateTimeBetween('-3 months', '-2 days');
 
         return [
-            'user_id' => rand(1, 3),
             'title' => $title,
             'slug' => Str::slug($title),
             'is_published' => 1,
