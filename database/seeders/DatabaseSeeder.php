@@ -22,12 +22,12 @@ class DatabaseSeeder extends Seeder
 
 //        $this->call(BlogItemAttachmentSeeder::class);
 
-//        \App\Models\BlogPost::factory(2)
-//            ->state(new Sequence(
-//                ['title' => 'Блог', 'slug' => Str::slug('Блог')],
-//                ['title' => 'Галерея', 'slug' => Str::slug('Галерея')],
-//                ))
-//            ->create();
+        \App\Models\BlogPost::factory(2)
+            ->state(new Sequence(
+                ['title' => 'Блог', 'slug' => Str::slug('Блог')],
+                ['title' => 'Галерея', 'slug' => Str::slug('Галерея')],
+                ))
+            ->create();
 
         //$this->call(BlogPostBlogItemsSeeder::class);
         $this->call(RolesSeeder::class);
