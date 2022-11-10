@@ -45,15 +45,6 @@ abstract class AbstractServiceFactory
     protected function createServiceWithDto($service, $dto): EntityServiceInterface
     {
         $serviceObj = $this->createService($service);
-//        /**
-//         * @var DataTransferObject $dtoObj
-//         */
-//
-//
-//
-//        if (!$dtoObj instanceof DataTransferObject) {
-//            throw new LogicException('ENTITY SERVICE FACTORY ERROR!. DTO for ' . $service . ' not found');
-//        }
 
         $serviceObj->setDto($dto);
 

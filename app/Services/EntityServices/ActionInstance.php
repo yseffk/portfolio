@@ -3,9 +3,7 @@
 namespace App\Services\EntityServices;
 
 
-use App\Models\User;
-use App\Services\EntityServices\Eloquent\Shop\UseCase\RecalculateOrderService;
-use App\Services\EntityServices\Eloquent\User\Dto\UserDto;
+
 use App\Services\EntityServices\Eloquent\User\Dto\UserRegisterDto;
 use App\Services\EntityServices\Eloquent\User\UseCase\Auth\LogoutService;
 use App\Services\EntityServices\Eloquent\User\UseCase\Auth\RefreshService;
